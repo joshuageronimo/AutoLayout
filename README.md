@@ -4,7 +4,8 @@ This app is based off of [Let's Build That App's](https://www.youtube.com/channe
 
 ## Features
 
-- Constraints are implemented programmatically.
+- The app looks great with any iPhone Screen Sizes using AutoLayout.
+- Constraints & StackViews are implemented programmatically.
 
 
 
