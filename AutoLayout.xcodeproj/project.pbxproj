@@ -13,6 +13,7 @@
 		DF045CE11FF32DEB0015CD0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF045CE01FF32DEB0015CD0B /* Assets.xcassets */; };
 		DF045CE41FF32DEB0015CD0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF045CE21FF32DEB0015CD0B /* LaunchScreen.storyboard */; };
 		DF9EC45F1FF5E4A000180EAF /* SwipingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9EC45E1FF5E4A000180EAF /* SwipingCollectionViewController.swift */; };
+		DF9EC4611FF5EBC100180EAF /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9EC4601FF5EBC100180EAF /* PageCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		DF045CE31FF32DEB0015CD0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF045CE51FF32DEB0015CD0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF9EC45E1FF5E4A000180EAF /* SwipingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewController.swift; sourceTree = "<group>"; };
+		DF9EC4601FF5EBC100180EAF /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				DF045CD91FF32DEB0015CD0B /* AppDelegate.swift */,
 				DF045CDB1FF32DEB0015CD0B /* ViewController.swift */,
 				DF9EC45E1FF5E4A000180EAF /* SwipingCollectionViewController.swift */,
+				DF9EC4601FF5EBC100180EAF /* PageCollectionViewCell.swift */,
 				DF045CDD1FF32DEB0015CD0B /* Main.storyboard */,
 				DF045CE01FF32DEB0015CD0B /* Assets.xcassets */,
 				DF045CE21FF32DEB0015CD0B /* LaunchScreen.storyboard */,
@@ -142,6 +145,7 @@
 				DF045CDC1FF32DEB0015CD0B /* ViewController.swift in Sources */,
 				DF9EC45F1FF5E4A000180EAF /* SwipingCollectionViewController.swift in Sources */,
 				DF045CDA1FF32DEB0015CD0B /* AppDelegate.swift in Sources */,
+				DF9EC4611FF5EBC100180EAF /* PageCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
