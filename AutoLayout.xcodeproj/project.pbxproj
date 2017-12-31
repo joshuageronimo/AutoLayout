@@ -14,6 +14,7 @@
 		DF045CE41FF32DEB0015CD0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF045CE21FF32DEB0015CD0B /* LaunchScreen.storyboard */; };
 		DF9EC45F1FF5E4A000180EAF /* SwipingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9EC45E1FF5E4A000180EAF /* SwipingCollectionViewController.swift */; };
 		DF9EC4611FF5EBC100180EAF /* PageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9EC4601FF5EBC100180EAF /* PageCollectionViewCell.swift */; };
+		DF9EC4881FF889BA00180EAF /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9EC4871FF889BA00180EAF /* Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		DF045CE51FF32DEB0015CD0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF9EC45E1FF5E4A000180EAF /* SwipingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewController.swift; sourceTree = "<group>"; };
 		DF9EC4601FF5EBC100180EAF /* PageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCollectionViewCell.swift; sourceTree = "<group>"; };
+		DF9EC4871FF889BA00180EAF /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +60,41 @@
 		DF045CD81FF32DEB0015CD0B /* AutoLayout */ = {
 			isa = PBXGroup;
 			children = (
+				DF9EC4861FF8899100180EAF /* Model */,
+				DF9EC4851FF8898A00180EAF /* View */,
+				DF9EC4841FF8897700180EAF /* Controller */,
 				DF045CD91FF32DEB0015CD0B /* AppDelegate.swift */,
 				DF045CDB1FF32DEB0015CD0B /* ViewController.swift */,
-				DF9EC45E1FF5E4A000180EAF /* SwipingCollectionViewController.swift */,
-				DF9EC4601FF5EBC100180EAF /* PageCollectionViewCell.swift */,
 				DF045CDD1FF32DEB0015CD0B /* Main.storyboard */,
 				DF045CE01FF32DEB0015CD0B /* Assets.xcassets */,
 				DF045CE21FF32DEB0015CD0B /* LaunchScreen.storyboard */,
 				DF045CE51FF32DEB0015CD0B /* Info.plist */,
 			);
 			path = AutoLayout;
+			sourceTree = "<group>";
+		};
+		DF9EC4841FF8897700180EAF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF9EC45E1FF5E4A000180EAF /* SwipingCollectionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DF9EC4851FF8898A00180EAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF9EC4601FF5EBC100180EAF /* PageCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF9EC4861FF8899100180EAF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF9EC4871FF889BA00180EAF /* Page.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +173,7 @@
 				DF9EC45F1FF5E4A000180EAF /* SwipingCollectionViewController.swift in Sources */,
 				DF045CDA1FF32DEB0015CD0B /* AppDelegate.swift in Sources */,
 				DF9EC4611FF5EBC100180EAF /* PageCollectionViewCell.swift in Sources */,
+				DF9EC4881FF889BA00180EAF /* Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

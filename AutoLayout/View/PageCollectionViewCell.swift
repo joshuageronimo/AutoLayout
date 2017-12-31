@@ -10,28 +10,38 @@ import UIKit
 
 class PageCollectionViewCell: UICollectionViewCell {
     
+    var page: Page? {
+        didSet{
+            // Make sure to safely unwrap Page
+            guard let unwrappedPage = page else { return }
+            // set the image for bearImageView
+            bearImageView.image = UIImage(named: unwrappedPage.imageName)
+            // Set the header and body description of descriptionTextView
+            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerDescription, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+            attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyDescription)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.gray]))
+            descriptionTextView.attributedText = attributedText
+            descriptionTextView.textAlignment = .center
+        }
+    }
+    
     // This UIView contains bearImageView
-    let topImageViewContainer: UIView = {
+    private let topImageViewContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     // This UIImageView contains bear_first.png
-    let bearImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "bear_first"))
+    private let bearImageView: UIImageView = {
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     // This TextView is used as a UILabel to contain the description
-    let descriptionTextView: UITextView = {
+    private let descriptionTextView: UITextView = {
         let textView = UITextView()
-        let attributedText = NSMutableAttributedString(string: "Join us today in our fun and games!", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
-        attributedText.append(NSAttributedString(string: "\n\n\nAre you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon.", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.gray]))
-        textView.attributedText = attributedText
-        textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false

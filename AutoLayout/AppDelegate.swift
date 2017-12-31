@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // RootView of the app
         window = UIWindow()
@@ -23,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         layout.scrollDirection = .horizontal
         let swipingCollectionViewController = SwipingCollectionViewController(collectionViewLayout: layout)
         window?.rootViewController = swipingCollectionViewController
-        
         
         return true
     }

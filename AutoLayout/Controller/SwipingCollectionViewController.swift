@@ -11,6 +11,11 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class SwipingCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    // This array contains the information for each page of the CollectionView
+    let pages = [Page(imageName: "bear_first", headerDescription: "Join us today in our fun and games!", bodyDescription: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon."),
+                 Page(imageName: "heart_second", headerDescription: "Subscribe and get coupons our daily event.", bodyDescription: "Get notified of the savings immediately when we announce them on our website. Make sure to also give us any feedback you have."),
+                 Page(imageName: "leaf_third", headerDescription: "VIP members special services.", bodyDescription: "Join the private club of elite customers will get you into select drawings and giveaways.")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +31,17 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // there will be four pages
-        return 4
+        return pages.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        // Configure the cell
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? PageCollectionViewCell {
+            let page = pages[indexPath.item]
+            cell.page = page
+            return cell
+        } else {
+            return PageCollectionViewCell()
+        }
     }
     
     // MARK: UICollectionViewDelegateFlowLayout
