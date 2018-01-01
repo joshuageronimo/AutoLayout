@@ -48,39 +48,10 @@ class PageCollectionViewCell: UICollectionViewCell {
         return textView
     }()
     
-    // This Button will act as the previous button
-    let prevButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("PREV", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        button.setTitleColor(.gray, for: .normal)
-        return button
-    }()
-    
-    // This UIPageControl will show the user which page they are on
-    let pageControl: UIPageControl = {
-        let pc = UIPageControl()
-        pc.currentPage = 0
-        pc.numberOfPages = 3
-        pc.currentPageIndicatorTintColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
-        pc.pageIndicatorTintColor = .gray
-        return pc
-    }()
-    
-    // This Button will act as the next button
-    let nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("NEXT", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-        
-        return button
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         // Show UI
         setUpLayoutConstraints()
-        setUpBottomControlsWithStackViews()
     }
     
     // Contains all the constraints of the views initialized at the top
@@ -104,23 +75,6 @@ class PageCollectionViewCell: UICollectionViewCell {
         descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24).isActive = true
         descriptionTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24).isActive = true
         descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-    }
-    
-    // MARK: - Bottom-Controls-StackView
-    fileprivate func setUpBottomControlsWithStackViews() {
-        // StackView Container
-        let bottomContainerStackView = UIStackView(arrangedSubviews: [prevButton, pageControl,  nextButton])
-        addSubview(bottomContainerStackView)
-        bottomContainerStackView.distribution = .fillEqually
-        bottomContainerStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        // Constraints for the StackView
-        NSLayoutConstraint.activate([
-            bottomContainerStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            bottomContainerStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            bottomContainerStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            bottomContainerStackView.heightAnchor.constraint(equalToConstant: 50)
-            ])
     }
     
     required init?(coder aDecoder: NSCoder) {
