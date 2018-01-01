@@ -23,11 +23,20 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         button.setTitle("PREV", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         button.setTitleColor(.gray, for: .normal)
+        button.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
         return button
     }()
     
+    // This button will swipe to the previous page
+    @objc private func handlePrev() {
+        let nextIndex = max(pageControl.currentPage - 1, 0)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     // This UIPageControl will show the user which page they are on
-    lazy var pageControl: UIPageControl = {
+    lazy private var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.currentPage = 0
         pc.numberOfPages = pages.count
@@ -41,9 +50,17 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         let button = UIButton(type: .system)
         button.setTitle("NEXT", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-//        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return button
     }()
+    
+    // This button will swipe to the next page
+    @objc private func handleNext() {
+        let nextIndex = min(pageControl.currentPage + 1, pages.count - 1)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
