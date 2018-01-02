@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // RootView of the app
         window = UIWindow()
         window?.makeKeyAndVisible()
-        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let swipingCollectionViewController = SwipingCollectionViewController(collectionViewLayout: layout)

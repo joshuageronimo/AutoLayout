@@ -74,6 +74,18 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         setUpBottomControlsWithStackViews()
     }
     
+    // This function will make the Page Control work while swiping.
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let index = targetContentOffset.pointee.x
+        print(index, view.frame.width)
+        /*
+         By the dividing the index variable to the width of the frame,
+         I will get the appropriate value to use as the index for
+         the current page for the UIPageController.
+        */
+        pageControl.currentPage = Int(index / view.frame.width)
+    }
+    
     
     // MARK: - Bottom-Controls-StackView
     fileprivate func setUpBottomControlsWithStackViews() {
