@@ -12,13 +12,25 @@ private let reuseIdentifier = "Cell"
 
 class SwipingCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    /// This function will make landscape mode work
+    /// - Using invalidateLayout will refresh the layout to conform to autolayout set up
+    /// - index path will get the current page index
+    /// - scrollToItem uses indexPath so that when the user changes the orientation it will go to the correct page
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { (_) in
+            self.collectionViewLayout.invalidateLayout()
+            let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }) { (_) in }
+    }
+    
     // This array contains the information for each page of the CollectionView
-    let pages = [Page(imageName: "bear_first", headerDescription: "Join us today in our fun and games!", bodyDescription: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon."),
+    private let pages = [Page(imageName: "bear_first", headerDescription: "Join us today in our fun and games!", bodyDescription: "Are you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon."),
                  Page(imageName: "heart_second", headerDescription: "Subscribe and get coupons our daily event.", bodyDescription: "Get notified of the savings immediately when we announce them on our website. Make sure to also give us any feedback you have."),
                  Page(imageName: "leaf_third", headerDescription: "VIP members special services.", bodyDescription: "Join the private club of elite customers will get you into select drawings and giveaways.")]
     
     // This Button will act as the previous button
-    let prevButton: UIButton = {
+    private let prevButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("PREV", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
@@ -29,9 +41,9 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     
     // This button will swipe to the previous page
     @objc private func handlePrev() {
-        let nextIndex = max(pageControl.currentPage - 1, 0)
-        let indexPath = IndexPath(item: nextIndex, section: 0)
-        pageControl.currentPage = nextIndex
+        let previousIndex = max(pageControl.currentPage - 1, 0)
+        let indexPath = IndexPath(item: previousIndex, section: 0)
+        pageControl.currentPage = previousIndex
         collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
@@ -46,7 +58,7 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     }()
     
     // This Button will act as the next button
-    let nextButton: UIButton = {
+    private let nextButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("NEXT", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
@@ -77,7 +89,6 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     // This function will make the Page Control work while swiping.
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let index = targetContentOffset.pointee.x
-        print(index, view.frame.width)
         /*
          By the dividing the index variable to the width of the frame,
          I will get the appropriate value to use as the index for
@@ -85,7 +96,6 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
         */
         pageControl.currentPage = Int(index / view.frame.width)
     }
-    
     
     // MARK: - Bottom-Controls-StackView
     fileprivate func setUpBottomControlsWithStackViews() {
@@ -134,7 +144,4 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0    // no space
     }
-    
-    
-
 }

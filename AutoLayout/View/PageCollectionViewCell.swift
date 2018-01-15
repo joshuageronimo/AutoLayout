@@ -56,25 +56,27 @@ class PageCollectionViewCell: UICollectionViewCell {
     
     // Contains all the constraints of the views initialized at the top
     private func setUpLayoutConstraints() {
-        // MARK: - topImageViewContainer
+        // add Subviews
         addSubview(topImageViewContainer)
-        topImageViewContainer.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        topImageViewContainer.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
-        topImageViewContainer.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        topImageViewContainer.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-        // MARK: - bearImageView-Constraint
         topImageViewContainer.addSubview(bearImageView)
-        bearImageView.centerXAnchor.constraint(equalTo: topImageViewContainer.centerXAnchor).isActive = true
-        bearImageView.centerYAnchor.constraint(equalTo: topImageViewContainer.centerYAnchor).isActive = true
-        bearImageView.heightAnchor.constraint(equalTo: topImageViewContainer.heightAnchor, multiplier: 0.5).isActive = true
-        
-        // MARK: - descriptionTextView-Constraint
         addSubview(descriptionTextView)
-        descriptionTextView.topAnchor.constraint(equalTo: topImageViewContainer.bottomAnchor).isActive = true
-        descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24).isActive = true
-        descriptionTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24).isActive = true
-        descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        NSLayoutConstraint.activate([
+            // topImageViewContainer-Constraint
+            topImageViewContainer.topAnchor.constraint(equalTo: topAnchor),
+            topImageViewContainer.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            topImageViewContainer.leadingAnchor.constraint(equalTo: leadingAnchor),
+            topImageViewContainer.trailingAnchor.constraint(equalTo: trailingAnchor),
+            // bearImageView-Constraint
+            bearImageView.centerXAnchor.constraint(equalTo: topImageViewContainer.centerXAnchor),
+            bearImageView.centerYAnchor.constraint(equalTo: topImageViewContainer.centerYAnchor),
+            bearImageView.heightAnchor.constraint(equalTo: topImageViewContainer.heightAnchor, multiplier: 0.5),
+            // descriptionTextView-Constraint
+            descriptionTextView.topAnchor.constraint(equalTo: topImageViewContainer.bottomAnchor),
+            descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            descriptionTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
     }
     
     required init?(coder aDecoder: NSCoder) {
